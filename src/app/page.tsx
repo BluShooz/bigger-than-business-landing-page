@@ -360,10 +360,10 @@ export default function LandingPage() {
               Join the legends at Bigger Than Business. Book your master-craft cut today and elevate your entire presence.
             </p>
             <a
-              href="https://booksy.com"
+              href="https://www.biggerthan-business.com/"
               className="inline-block px-16 py-8 bg-primary text-white text-3xl font-black rounded-full hover:shadow-[0_20px_50px_rgba(30,64,175,0.3)] hover:scale-105 transition-all"
             >
-              BOOK NOW ON BOOKSY
+              BOOK NOW!!!
             </a>
           </motion.div>
 
