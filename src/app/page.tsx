@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Scissors, Star, Users, Clock, ShieldCheck, MapPin, ChevronRight, Phone, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useRef } from "react";
 
@@ -100,15 +101,20 @@ export default function LandingPage() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-40 glass border-b border-black/5">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <motion.div
-              initial={{ rotate: -10, scale: 0.9 }}
-              animate={{ rotate: 0, scale: 1 }}
-              className="text-2xl font-serif font-black tracking-tighter text-primary italic"
-            >
-              BTB <span className="text-secondary not-italic font-sans font-bold">BARBERSHOP</span>
-            </motion.div>
-          </div>
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative w-14 h-14 transition-transform group-hover:scale-110">
+              <Image
+                src="/logo.png"
+                alt="Bigger Than Business Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+            <span className="text-2xl font-serif font-black tracking-tighter text-primary italic">
+              BTB
+            </span>
+          </Link>
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
               <a key={link.name} href={link.href} className="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors py-2">
