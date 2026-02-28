@@ -16,12 +16,12 @@ export default function BlogPost() {
                     <Link href="/" className="inline-flex items-center gap-2 text-accent font-medium hover:-translate-x-1 transition-transform">
                         <ChevronLeft className="w-4 h-4" /> Back to Home
                     </Link>
-                    <div className="relative w-24 h-24 opacity-80 hover:opacity-100 transition-opacity">
+                    <div className="relative w-72 h-72 opacity-90 hover:opacity-100 transition-opacity">
                         <Image
-                            src="/logo.png"
-                            alt="BTB Logo"
+                            src="/logo-new.png"
+                            alt="Bigger Than Business - BTB Wings Logo"
                             fill
-                            className="object-contain"
+                            className="object-contain drop-shadow-xl"
                         />
                     </div>
                 </div>

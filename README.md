@@ -1,3 +1,7 @@
+# Bigger Than Business - Landing Page
+
+**Live Site:** https://bigger-than-business-landing-page-jmmq1rwmp.vercel.app/
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

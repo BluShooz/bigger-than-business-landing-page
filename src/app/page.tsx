@@ -102,7 +102,7 @@ export default function LandingPage() {
       <nav className="fixed top-0 w-full z-40 glass border-b border-black/5">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-14 h-14 transition-transform group-hover:scale-110">
+            <div className="relative w-28 h-28 transition-transform group-hover:scale-110">
               <Image
                 src="/logo.png"
                 alt="Bigger Than Business Logo"
@@ -146,6 +146,18 @@ export default function LandingPage() {
         </motion.div>
 
         <div className="container mx-auto px-6 relative z-10">
+          {/* BTB Wings Logo - Hero Section Top Left */}
+          <div className="mb-8">
+            <div className="relative w-32 h-32 md:w-40 md:h-40">
+              <Image
+                src="/logo-new.png"
+                alt="Bigger Than Business - BTB Wings Logo"
+                fill
+                className="object-contain drop-shadow-2xl"
+                priority
+              />
+            </div>
+          </div>
           <div className="max-w-3xl">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
