@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronLeft, Calendar, User, Clock } from "lucide-react";
 import { Metadata } from "next";
 
@@ -11,9 +12,19 @@ export default function BlogPost() {
     return (
         <div className="min-h-screen bg-background text-foreground py-20">
             <div className="container mx-auto px-6 max-w-4xl">
-                <Link href="/" className="inline-flex items-center gap-2 text-accent font-medium mb-12 hover:-translate-x-1 transition-transform">
-                    <ChevronLeft className="w-4 h-4" /> Back to Home
-                </Link>
+                <div className="flex justify-between items-start mb-12">
+                    <Link href="/" className="inline-flex items-center gap-2 text-accent font-medium hover:-translate-x-1 transition-transform">
+                        <ChevronLeft className="w-4 h-4" /> Back to Home
+                    </Link>
+                    <div className="relative w-24 h-24 opacity-80 hover:opacity-100 transition-opacity">
+                        <Image
+                            src="/logo.png"
+                            alt="BTB Logo"
+                            fill
+                            className="object-contain"
+                        />
+                    </div>
+                </div>
 
                 <article className="prose prose-invert prose-gold max-w-none">
                     <div className="flex flex-wrap gap-4 text-xs text-foreground/40 uppercase tracking-widest font-bold mb-6">
