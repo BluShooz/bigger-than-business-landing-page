@@ -116,7 +116,7 @@ export default function LandingPage() {
               </a>
             ))}
             <a
-              href="https://booksy.com"
+              href="https://www.biggerthan-business.com/"
               target="_blank"
               className="px-8 py-3 bg-primary text-white text-sm font-black rounded-full hover:shadow-xl hover:bg-primary/90 transition-all flex items-center gap-2"
             >
@@ -158,7 +158,7 @@ export default function LandingPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-6">
                 <a
-                  href="https://booksy.com"
+                  href="https://www.biggerthan-business.com/"
                   className="px-12 py-5 bg-primary text-white text-xl font-black rounded-full hover:shadow-2xl hover:scale-105 transition-all text-center flex items-center justify-center gap-2"
                 >
                   SECURE YOUR CHAIR <Scissors className="w-6 h-6" />
