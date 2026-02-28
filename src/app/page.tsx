@@ -147,8 +147,8 @@ export default function LandingPage() {
 
         <div className="container mx-auto px-6 relative z-10">
           {/* BTB Wings Logo - Hero Section Top Left */}
-          <div className="mb-8">
-            <div className="relative w-32 h-32 md:w-40 md:h-40">
+          <div className="mb-4">
+            <div className="relative w-24 h-24 md:w-32 md:h-32">
               <Image
                 src="/logo-new.png"
                 alt="Bigger Than Business - BTB Wings Logo"
