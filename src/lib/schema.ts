@@ -54,7 +54,7 @@ export const faqSchema = {
             "name": "Do you accept walk-ins in Pflugerville?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "While we prioritize appointments via Booksy to ensure quality, we do accommodate walk-ins when possible. Booking in advance is recommended for a guaranteed slot."
+                "text": "We primarily operate by appointment to ensure every client receives our full attention and a high-quality experience. However, when availability allows across our eight chairs, we are happy to accommodate walk-in clients in Pflugerville."
             }
         },
         {

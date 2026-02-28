@@ -58,7 +58,7 @@ const DIFFERENTIATORS = [
 const FAQS = [
   {
     question: "Do you accept walk-ins?",
-    answer: "We maximize focus on our clients via Booksy appointments, but we always try to squeeze in walk-ins in Pflugerville whenever our 8 chairs have an opening!",
+    answer: "We primarily operate by appointment to ensure every client receives our full attention and a high-quality experience. However, when availability allows across our eight chairs, we are happy to accommodate walk-in clients in Pflugerville.",
   },
   {
     question: "Cost for a premium fade?",
