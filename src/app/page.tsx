@@ -1,316 +1,378 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Scissors, Star, Users, Clock, ShieldCheck, MapPin, ChevronRight, Phone, Calendar } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Scissors, Star, Users, Clock, ShieldCheck, MapPin, ChevronRight, Phone, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { useRef } from "react";
 
 const NAV_LINKS = [
   { name: "Services", href: "#services" },
-  { name: "Why Us", href: "#why-us" },
-  { name: "Blog", href: "#blog" },
+  { name: "The Experience", href: "#why-us" },
+  { name: "Style Guide", href: "#blog" },
   { name: "FAQ", href: "#faq" },
 ];
 
 const SERVICES = [
   {
-    title: "Professional Fade Haircuts in Pflugerville",
-    description: "Precision tapers, skin fades, and drop fades tailored to your head shape and hair texture.",
-    icon: <Scissors className="w-6 h-6 text-accent" />,
+    title: "Surgical Fade Haircuts",
+    description: "The cleanest blends in Pflugerville. Skin fades, tapers, and drop fades engineered for perfection.",
+    icon: <Scissors className="w-6 h-6" />,
     price: "From $35",
+    color: "bg-blue-600",
   },
   {
-    title: "Kids Haircuts in Pflugerville, TX",
-    description: "Patient, professional grooming for the younger generation in a family-friendly environment.",
-    icon: <Users className="w-6 h-6 text-accent" />,
+    title: "Young Legends (Kids)",
+    description: "Patient, expert grooming for our youngest clients in a high-energy, friendly environment.",
+    icon: <Users className="w-6 h-6" />,
     price: "From $25",
+    color: "bg-yellow-500",
   },
   {
-    title: "Premium Beard Trims & Lineups",
-    description: "Sharp lines and balanced grooming to complement your facial structure and style.",
-    icon: <Scissors className="w-6 h-6 text-accent" />,
+    title: "Master Beard Sculpting",
+    description: "Sharp outlines and volume balancing to emphasize your jawline and facial geometry.",
+    icon: <Scissors className="w-6 h-6" />,
     price: "From $25",
+    color: "bg-red-500",
   },
 ];
 
 const DIFFERENTIATORS = [
   {
-    title: "8-Chair Availability",
-    description: "Less wait time with our experienced team of 8 professional barbers.",
-    icon: <Clock className="w-8 h-8 text-accent" />,
+    title: "High-Output: 8 Chairs",
+    description: "Speed meets precision. Minimum wait times with our full team of professional specialists.",
+    icon: <Clock className="w-8 h-8" />,
   },
   {
-    title: "Consistent 5.0⭐ Reputation",
-    description: "Over 280 verified reviews from our loyal Pflugerville community.",
-    icon: <Star className="w-8 h-8 text-accent" />,
+    title: "Elite 5.0⭐ Status",
+    description: "Pflugerville's top-rated destination based on 280+ verified mastercraft cuts.",
+    icon: <Star className="w-8 h-8" />,
   },
   {
-    title: "Professional Atmosphere",
-    description: "A clean, modern, and welcoming environment for every client.",
-    icon: <ShieldCheck className="w-8 h-8 text-accent" />,
+    title: "Next-Gen Atmosphere",
+    description: "Vibrant, professional, and built for the community. Where culture and craft collide.",
+    icon: <ShieldCheck className="w-8 h-8" />,
   },
 ];
 
 const FAQS = [
   {
-    question: "Do you accept walk-ins in Pflugerville?",
-    answer: "While we prioritize appointments via Booksy to ensure quality, we do accommodate walk-ins when possible. Booking in advance is recommended for a guaranteed slot.",
+    question: "Do you accept walk-ins?",
+    answer: "We maximize focus on our clients via Booksy appointments, but we always try to squeeze in walk-ins in Pflugerville whenever our 8 chairs have an opening!",
   },
   {
-    question: "How much does a fade cost in Pflugerville?",
-    answer: "Our professional fade haircuts start at $35. This includes a consultation and a precision finish.",
+    question: "Cost for a premium fade?",
+    answer: "Our master-tier fade haircuts start at $35, including a shape-up and precision finish.",
   },
   {
-    question: "What is the best barbershop near 78660?",
-    answer: "Bigger Than Business is a top-rated choice in the 78660 area, known for our expert barbers and community vibe.",
+    question: "Best barbershop near 78660?",
+    answer: "Bigger Than Business is the highest-rated shop serving the 78660, Stone Hill, and Falcon Pointe areas.",
   },
   {
-    question: "Do you cut kids' hair?",
-    answer: "Yes, we offer specialized haircuts for kids in Pflugerville, ensuring a comfortable experience for them.",
-  },
-  {
-    question: "How often should I get a haircut?",
-    answer: "To maintain a sharp look, we recommend visiting our Pflugerville barbershop every 2-3 weeks.",
+    question: "Is it kid-friendly?",
+    answer: "Absolutely. We pride ourselves on being a family-centric shop where kids feel like legends.",
   },
 ];
 
 export default function LandingPage() {
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start start", "end start"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
+  const y = useTransform(scrollYProgress, [0, 0.5], [0, -50]);
+
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-accent/30 overflow-x-hidden">
+    <div className="min-h-screen bg-white text-foreground selection:bg-primary/20 overflow-x-hidden">
       {/* Sticky Call Button (Mobile) */}
-      <div className="fixed bottom-6 right-6 z-50 md:hidden">
+      <div className="fixed bottom-6 right-6 z-50 md:hidden scale-animate">
         <a
           href="tel:5125905235"
-          className="flex items-center justify-center w-14 h-14 bg-accent text-primary rounded-full shadow-lg border border-accent/20 hover:scale-110 transition-transform"
+          className="flex items-center justify-center w-16 h-16 bg-accent text-white rounded-full shadow-2xl hover:scale-110 transition-transform animate-bounce"
         >
-          <Phone className="w-6 h-6" />
+          <Phone className="w-7 h-7" />
         </a>
       </div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-40 glass border-b border-white/5">
+      <nav className="fixed top-0 w-full z-40 glass border-b border-black/5">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="text-2xl font-serif font-bold text-gradient">Bigger Than Business</div>
+            <motion.div
+              initial={{ rotate: -10, scale: 0.9 }}
+              animate={{ rotate: 0, scale: 1 }}
+              className="text-2xl font-serif font-black tracking-tighter text-primary italic"
+            >
+              BTB <span className="text-secondary not-italic font-sans font-bold">BARBERSHOP</span>
+            </motion.div>
           </div>
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
-              <a key={link.name} href={link.href} className="text-sm font-medium hover:text-accent transition-colors">
+              <a key={link.name} href={link.href} className="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors py-2">
                 {link.name}
               </a>
             ))}
             <a
               href="https://booksy.com"
               target="_blank"
-              className="px-6 py-2.5 bg-accent text-primary text-sm font-bold rounded-full hover:bg-accent/90 transition-colors"
+              className="px-8 py-3 bg-primary text-white text-sm font-black rounded-full hover:shadow-xl hover:bg-primary/90 transition-all flex items-center gap-2"
             >
-              Book Now
+              BOOK NOW <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center pt-20">
-        <div className="absolute inset-0 z-0">
+      {/* Hero Section - Vibrant Vibe */}
+      <section ref={targetRef} className="relative h-screen flex items-center pt-20 overflow-hidden">
+        <motion.div style={{ opacity, scale, y }} className="absolute inset-0 z-0">
           <Image
             src="/hero-bg.png"
             alt="Bigger Than Business Barbershop"
             fill
-            className="object-cover opacity-40 grayscale"
+            className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-        </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
+        </motion.div>
 
         <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-bold uppercase tracking-wider mb-6">
-              <MapPin className="w-3 h-3" /> Pflugerville's Premier Barbershop
-            </div>
-            <h1 className="text-5xl md:text-7xl font-serif font-bold leading-tight mb-6">
-              The <span className="text-gradient">Best Barbershop</span> in Pflugerville
-            </h1>
-            <p className="text-lg md:text-xl text-foreground/80 mb-10 leading-relaxed max-w-2xl">
-              Precision grooming meets community connection. Located in Pflugerville, TX, we specialize in high-intent
-              styling—from surgical fades to classic gentleman's cuts.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="https://booksy.com"
-                className="px-10 py-4 bg-accent text-primary text-lg font-bold rounded-full hover:bg-accent/90 transition-all hover:scale-105 text-center"
-              >
-                Book Your Cut
-              </a>
-              <a
-                href="#services"
-                className="px-10 py-4 bg-white/5 border border-white/10 text-lg font-bold rounded-full hover:bg-white/10 transition-all text-center"
-              >
-                View Services
-              </a>
-            </div>
-          </motion.div>
+          <div className="max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-foreground text-xs font-black uppercase tracking-widest mb-8 shadow-sm">
+                <MapPin className="w-4 h-4 text-primary" /> Pflugerville's #1 Destination
+              </div>
+              <h1 className="text-6xl md:text-8xl font-serif font-black leading-tight mb-8">
+                Bigger Than <br />
+                <span className="text-primary italic animate-pulse">Business.</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-foreground font-medium mb-12 leading-relaxed max-w-xl border-l-4 border-primary pl-6">
+                Not just a cut, a connection. Experience the most vibrant grooming atmosphere in Pflugerville, TX.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6">
+                <a
+                  href="https://booksy.com"
+                  className="px-12 py-5 bg-primary text-white text-xl font-black rounded-full hover:shadow-2xl hover:scale-105 transition-all text-center flex items-center justify-center gap-2"
+                >
+                  SECURE YOUR CHAIR <Scissors className="w-6 h-6" />
+                </a>
+                <a
+                  href="#services"
+                  className="px-12 py-5 bg-secondary text-foreground text-xl font-black rounded-full hover:shadow-xl hover:scale-105 transition-all text-center"
+                >
+                  EXPLORE STYLES
+                </a>
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </section>
 
-      {/* Authority Section */}
-      <section className="py-24 border-y border-white/5 bg-white/[0.01]">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center gap-16">
-            <div className="w-full md:w-1/2">
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
-                <Image src="/barber-work.png" alt="What Makes a Barbershop the Best" fill className="object-cover" />
-              </div>
-            </div>
-            <div className="w-full md:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-                What Makes a Barbershop the Best in Pflugerville?
-              </h2>
-              <div className="space-y-6 text-foreground/80 leading-relaxed">
-                <p>
-                  Being the **best barbershop in Pflugerville** isn't just about the tools—it's about the mastery of the craft.
-                  Our experienced barbers combine classical techniques with modern trends to ensure every client leaves
-                  feeling like the best version of themselves.
-                </p>
-                <p>
-                  We focus on a family-friendly environment and consistent results that have built our 5.0-star reputation.
-                  In a rapidly growing city like Pflugerville, we stand as a cornerstone of quality, providing a clean,
-                  professional atmosphere where every chair is manned by a specialist.
-                </p>
-              </div>
-            </div>
+        {/* Floating Accent Shapes */}
+        <div className="absolute bottom-10 right-10 hidden lg:block animate-bounce duration-[3s]">
+          <div className="w-32 h-32 rounded-3xl bg-secondary rotate-12 flex items-center justify-center text-primary font-black text-2xl shadow-2xl">
+            5.0 ⭐
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-24">
+      {/* Services Section - Popping Blocks */}
+      <section id="services" className="py-32 bg-slate-50 relative overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Mastercrafted Services</h2>
-            <p className="text-foreground/60">Specialized grooming designed to highlight your natural features.</p>
+          <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
+            <div className="max-w-2xl">
+              <h2 className="text-4xl md:text-6xl font-serif font-black mb-6">Elite Grooming Services</h2>
+              <p className="text-xl text-foreground/60 border-t-2 border-primary pt-6 inline-block">Tailored precision for the modern gentleman.</p>
+            </div>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-10">
             {SERVICES.map((service, i) => (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-2xl glass border border-white/5 hover:border-accent/20 transition-all group"
+                className="p-10 rounded-[2.5rem] bg-white shadow-xl hover:shadow-2xl transition-all group relative overflow-hidden"
               >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                <div className={cn("w-16 h-16 rounded-2xl flex items-center justify-center mb-8 text-white shadow-lg transition-transform group-hover:rotate-12", service.color)}>
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-4">{service.title}</h3>
-                <p className="text-foreground/60 mb-6 leading-relaxed">{service.description}</p>
-                <div className="text-accent font-bold">{service.price}</div>
+                <h3 className="text-2xl font-black mb-4">{service.title}</h3>
+                <p className="text-foreground/70 mb-8 leading-relaxed font-medium">{service.description}</p>
+                <div className="text-2xl font-black text-primary">{service.price}</div>
+                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                  <Scissors className="w-24 h-24 rotate-[135deg]" />
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why We're Different Section */}
-      <section id="why-us" className="py-24 bg-accent/5">
-        <div className="container mx-auto px-6 text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Why Pflugerville Trusts Us</h2>
+      {/* Authority Section - "What Makes Us Best" */}
+      <section className="py-32 bg-white">
+        <div className="container mx-auto px-6 text-center max-w-4xl">
+          <motion.h2
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="text-4xl md:text-7xl font-serif font-black mb-12 italic"
+          >
+            Pflugerville's <span className="text-primary not-italic underline decoration-secondary decoration-8">Gold Standard</span>
+          </motion.h2>
+          <div className="grid md:grid-cols-2 gap-12 text-left items-center">
+            <div className="space-y-8 text-xl font-medium leading-relaxed">
+              <p className="text-foreground">
+                Being the <span className="font-black text-primary">best barbershop in Pflugerville</span> isn't just about cutting hair—it's about building a legacy.
+                Our 8-chair facility ensures that excellence is always available when you need it most.
+              </p>
+              <p className="text-foreground/60">
+                From Stone Hill to Falcon Pointe, our reputation is forged in every lineup and every fade.
+                We've built a space where professionalism meets the vibrancy of our local culture.
+              </p>
+            </div>
+            <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl rotate-2">
+              <Image src="/barber-work.png" alt="What Makes Us Best" fill className="object-cover" />
+              <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
+            </div>
+          </div>
         </div>
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-12">
+      </section>
+
+      {/* Why We're Different Section */}
+      <section id="why-us" className="py-32 bg-primary text-white overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+        <div className="container mx-auto px-6 text-center mb-24">
+          <h2 className="text-4xl md:text-6xl font-serif font-black mb-4">The BTB Difference</h2>
+        </div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid md:grid-cols-3 gap-16">
             {DIFFERENTIATORS.map((item) => (
-              <div key={item.title} className="text-center">
-                <div className="inline-flex items-center justify-center mb-6">
+              <motion.div
+                key={item.title}
+                className="text-center"
+                whileHover={{ y: -10 }}
+              >
+                <div className="inline-flex items-center justify-center mb-8 p-6 rounded-full bg-white/10 text-secondary">
                   {item.icon}
                 </div>
-                <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
-                <p className="text-foreground/60 max-w-xs mx-auto">{item.description}</p>
-              </div>
+                <h3 className="text-3xl font-black mb-6">{item.title}</h3>
+                <p className="text-white/70 text-lg font-medium max-w-xs mx-auto leading-relaxed">{item.description}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Blog Teaser / Face Shape Guide */}
-      <section id="blog" className="py-24 bg-white/[0.01]">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center gap-16">
-            <div className="w-full md:w-1/2 order-2 md:order-1">
-              <h2 className="text-3xl md:text-5xl font-serif font-bold mb-8 leading-tight">
-                Finding the Best Haircuts for Your Face Shape
-              </h2>
-              <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
-                Unlock your signature look with our expert guide on matching haircut geometry with your face shape.
-                Whether you have an oval, round, or square face, our Pflugerville barbers specialize in
-                cuts that enhance your character.
-              </p>
-              <a href="/blog/face-shape-guide" className="inline-flex items-center gap-2 group text-accent font-bold text-lg">
-                Read the Full Guide <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+      {/* Blog Teaser / Face Shape Guide - PHENOMENAL VIBRANT BACKGROUND */}
+      <section id="blog" className="relative py-48 overflow-hidden group">
+        <div className="absolute inset-0 z-0">
+          <Image src="/face-shape-bg.jpg" alt="Vibrant Barbershop Work" fill className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" />
+          <div className="absolute inset-0 bg-vibrant-gradient opacity-90 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/50 via-primary/20 to-primary/80" />
+        </div>
+        <div className="container mx-auto px-6 relative z-10 text-white">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="text-5xl md:text-8xl font-serif font-black mb-12 leading-tight tracking-tighter"
+            >
+              Master Your <br />
+              <span className="text-secondary italic underline decoration-white">Face Shape</span>
+            </motion.h2>
+            <p className="text-xl md:text-3xl font-medium mb-16 leading-relaxed text-white/90">
+              Stop guessing. Start styling. Our exclusive guide reveals the surgical precision behind
+              matching the perfect haircut and fade with your unique facial geometry.
+            </p>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
+              <a href="/blog/face-shape-guide" className="inline-flex items-center gap-4 px-12 py-6 bg-white text-primary rounded-full font-black text-2xl shadow-2xl hover:bg-secondary hover:text-foreground transition-all">
+                ACCESS THE STYLE GUIDE <ChevronRight className="w-8 h-8" />
               </a>
-            </div>
-            <div className="w-full md:w-1/2 order-1 md:order-2">
-              <div className="relative aspect-video rounded-3xl overflow-hidden">
-                <Image src="/shop-atmosphere.png" alt="Pflugerville Barbershop Atmosphere" fill className="object-cover" />
-              </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-24">
+      <section id="faq" className="py-32 bg-slate-50">
         <div className="container mx-auto px-6 max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-12 text-center">Frequently Asked Questions</h2>
-          <div className="space-y-6">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-serif font-black mb-6">Expert Insights</h2>
+            <div className="w-24 h-2 bg-primary mx-auto" />
+          </div>
+          <div className="space-y-8">
             {FAQS.map((faq) => (
-              <div key={faq.question} className="p-8 rounded-2xl glass border border-white/5">
-                <h3 className="text-xl font-bold mb-4">{faq.question}</h3>
-                <p className="text-foreground/60 leading-relaxed">{faq.answer}</p>
-              </div>
+              <motion.div
+                key={faq.question}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="p-10 rounded-[2rem] bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all"
+              >
+                <h3 className="text-2xl font-black mb-6 text-primary">{faq.question}</h3>
+                <p className="text-foreground/70 text-lg leading-relaxed font-medium">{faq.answer}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Service Area Section */}
-      <section className="py-16 bg-white/[0.02] border-y border-white/5">
-        <div className="container mx-auto px-6 text-center">
-          <h3 className="text-sm font-bold uppercase tracking-widest text-accent mb-8">Proudly Serving Our Neighborhoods</h3>
-          <div className="flex flex-wrap justify-center gap-6 md:gap-12 text-foreground/40 font-medium">
-            <span>Pflugerville</span>
-            <span>78660</span>
-            <span>Stone Hill</span>
-            <span>Falcon Pointe</span>
-            <span>Blackhawk</span>
-            <span>Round Rock</span>
-            <span>North Austin</span>
-          </div>
+      <section className="py-20 bg-primary text-white/50 border-t border-white/5 overflow-hidden">
+        <div className="flex whitespace-nowrap animate-marquee">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className="flex gap-16 px-8 text-2xl font-black uppercase tracking-[0.3em] items-center">
+              <span>Pflugerville</span>
+              <div className="w-3 h-3 bg-secondary rounded-full" />
+              <span>78660</span>
+              <div className="w-3 h-3 bg-white/20 rounded-full" />
+              <span>Stone Hill</span>
+              <div className="w-3 h-3 bg-secondary rounded-full" />
+              <span>Falcon Pointe</span>
+              <div className="w-3 h-3 bg-white/20 rounded-full" />
+              <span>Blackhawk</span>
+              <div className="w-3 h-3 bg-secondary rounded-full" />
+              <span>Round Rock</span>
+              <div className="w-3 h-3 bg-white/20 rounded-full" />
+              <span>North Austin</span>
+              <div className="w-3 h-3 bg-secondary rounded-full" />
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Footer / Final CTA */}
-      <footer className="py-24 text-center">
+      <footer className="py-40 text-center bg-white text-foreground">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-6xl font-serif font-bold mb-8">Ready for Your Transformation?</h2>
-          <p className="text-xl text-foreground/60 mb-12 max-w-2xl mx-auto">
-            Join the community at Bigger Than Business. Book your consultation today and experience
-            the best haircut in Pflugerville.
-          </p>
-          <a
-            href="https://booksy.com"
-            className="inline-block px-12 py-5 bg-accent text-primary text-xl font-bold rounded-full hover:bg-accent/90 transition-all hover:scale-105 shadow-xl shadow-accent/20"
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="mb-20"
           >
-            Book Appointment Now
-          </a>
-          <div className="mt-24 pt-12 border-t border-white/5 text-foreground/40 text-sm">
-            <p>© {new Date().getFullYear()} Bigger Than Business Barbershop. All Rights Reserved.</p>
-            <p className="mt-2">2700 W Pecan St Suite 101, Pflugerville, TX 78660</p>
+            <h2 className="text-6xl md:text-9xl font-serif font-black mb-12 tracking-tighter">Your Best Self <br /><span className="text-primary italic animate-pulse">Starts Here.</span></h2>
+            <p className="text-2xl text-foreground font-medium mb-16 max-w-3xl mx-auto border-y-2 border-slate-100 py-8">
+              Join the legends at Bigger Than Business. Book your master-craft cut today and elevate your entire presence.
+            </p>
+            <a
+              href="https://booksy.com"
+              className="inline-block px-16 py-8 bg-primary text-white text-3xl font-black rounded-full hover:shadow-[0_20px_50px_rgba(30,64,175,0.3)] hover:scale-105 transition-all"
+            >
+              BOOK NOW ON BOOKSY
+            </a>
+          </motion.div>
+
+          <div className="mt-40 pt-20 border-t-2 border-slate-50 flex flex-col md:flex-row justify-between items-center gap-12 text-foreground/40 font-bold uppercase tracking-widest text-sm">
+            <p>© {new Date().getFullYear()} Bigger Than Business Barbershop</p>
+            <div className="flex items-center gap-2 text-primary font-black">
+              <MapPin className="w-4 h-4" /> 2700 W Pecan St Suite 101, Pflugerville, TX 78660
+            </div>
+            <p>Built for Legends</p>
           </div>
         </div>
       </footer>
