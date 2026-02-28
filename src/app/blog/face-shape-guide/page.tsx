@@ -96,12 +96,12 @@ export default function BlogPost() {
                         </p>
                     </div>
 
-                    <div className="mt-20 p-12 bg-accent text-primary rounded-3xl text-center">
+                    <div className="mt-20 p-12 bg-primary text-white rounded-3xl text-center shadow-2xl">
                         <h3 className="text-3xl font-serif font-bold mb-6">Ready for a cut that actually fits your face shape?</h3>
-                        <p className="text-lg font-medium mb-8">
+                        <p className="text-lg font-medium mb-8 text-white/90">
                             Visit Bigger Than Business in Pflugerville and let our experienced barbers help you find your signature look.
                         </p>
-                        <a href="https://booksy.com" className="inline-block px-10 py-4 bg-primary text-white text-lg font-bold rounded-full hover:bg-black transition-all">
+                        <a href="https://www.biggerthan-business.com/" className="inline-block px-10 py-4 bg-secondary text-foreground text-lg font-black rounded-full hover:scale-105 transition-all shadow-lg uppercase tracking-widest">
                             Book Appointment
                         </a>
                     </div>
