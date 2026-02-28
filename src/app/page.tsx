@@ -387,9 +387,14 @@ export default function LandingPage() {
 
           <div className="mt-40 pt-20 border-t-2 border-slate-50 flex flex-col md:flex-row justify-between items-center gap-12 text-foreground/40 font-bold uppercase tracking-widest text-sm">
             <p>© {new Date().getFullYear()} Bigger Than Business Barbershop</p>
-            <div className="flex items-center gap-2 text-primary font-black">
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=2700+W+Pecan+St+Suite+101,+Pflugerville,+TX+78660"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-primary font-black hover:text-accent transition-colors cursor-pointer"
+            >
               <MapPin className="w-4 h-4" /> 2700 W Pecan St Suite 101, Pflugerville, TX 78660
-            </div>
+            </a>
             <p>Built for Legends</p>
           </div>
         </div>
